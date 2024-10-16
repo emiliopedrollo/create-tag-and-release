@@ -17,14 +17,14 @@ export const createTagAndRelease = async (inputs: ReleaseInputs) => {
   console.log('create tag and release with inputs', JSON.stringify(inputs));
   const octokit = connectOctokit();
 
-  octokit.log.info(`discussion = ${inputs.discussion_category_name}`);
-  octokit.log.info( typeof inputs.discussion_category_name );
+  console.log(`discussion = ${inputs.discussion_category_name}`);
+  console.log( typeof inputs.discussion_category_name );
 
   const payloadDiscussionCategoryName = inputs.discussion_category_name
     ? { discussion_category_name: inputs.discussion_category_name }
     : {};
 
-  octokit.log.info(`payloadDiscussionCategoryName = ${payloadDiscussionCategoryName}`);
+  console.log(`payloadDiscussionCategoryName = ${payloadDiscussionCategoryName}`);
 
   // https://docs.github.com/pt/rest/releases/releases?apiVersion=2022-11-28#create-a-release
   const response = await octokit.request(`POST /repos/${inputs.owner}/${inputs.repo}/releases`, {
